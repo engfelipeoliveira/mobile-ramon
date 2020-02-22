@@ -1,12 +1,15 @@
-var savedNews = [];
+var arraySavedNews = [];
 
 $(document).ready(function() {
-	
+	var urlApiSport = 'http://newsapi.org/v2/everything?q=sport&apiKey=d77b40b94e714053b0e20391cad1954b';
+	var urlBusiness = 'http://newsapi.org/v2/everything?q=business&apiKey=d77b40b94e714053b0e20391cad1954b';
+	var urlFinancial = 'http://newsapi.org/v2/everything?q=financial&apiKey=d77b40b94e714053b0e20391cad1954b';
+
 	// add news into arrays 
 	now();
-	callRestApiNews('sport');
-	callRestApiNews('business');
-	callRestApiNews('financial');
+	callRestApiNews('sport', urlApiSport);
+	callRestApiNews('business', urlBusiness);
+	callRestApiNews('financial', urlFinancial);
 		
 	// show or hide zone of the news
 	$("#menu-home").on("click", function(e) {
@@ -50,7 +53,7 @@ $(document).ready(function() {
 		var publishedAt = $("#dt-" + table)[0].rows[tr].cells[0].innerText;
 		var description = $("#dt-" + table)[0].rows[tr].cells[1].innerText;
 
-		savedNews.push([publishedAt, description, ""]);						
+		SavedNew.push([publishedAt, description, ""]);						
 	});
 	
 	
@@ -63,34 +66,33 @@ function now() {
 }
 
 // call rest to get news from api
-function callRestApiNews(type) {
-	var url = 'http://newsapi.org/v2/everything?q='+type+'&apiKey=d77b40b94e714053b0e20391cad1954b';
+function callRestApiNews(suject, urlApi) {
+	var url = urlApi;
 	$.ajax({
 		url : url,
 		type : "GET",
 		async : false, 
 		success : (function(data, status, jqXhr) {
-			var dataSet = [];
+			var arrayOfNews = [];
 			let news;
-			var count = 0;
 			$.each(data.articles, function() {
 				news = {publishedAt : this.publishedAt, description : this.description};
-				dataSet.push([this.publishedAt, this.description, "<a class='btn-fav' id='"+this.publishedAt+"' href='#'><i class='fas fa-save'></i></a>"]);				
+				arrayOfNews.push([this.publishedAt, this.description, "<a class='btn-fav' id='"+this.publishedAt+"' href='#'><i class='fas fa-save'></i></a>"]);				
 			});
-			setDataTable(dataSet, type);			
+			setDataTable(arrayOfNews, suject);			
 		})
 	});
 }
 
 // json to datatable
-function setDataTable(dataSet, el) {
+function setDataTable(arrayOfNews, el) {
 	$('#dt-' + el).DataTable( {
 		"searching": true,
 		"info": true,
 		"lengthChange": true,
 		"select": true,
 		rightColumns: 1,
-		data: dataSet,
+		data: arrayOfNews,
 		columns: [
 			{ title: "Published" },
 			{ title: "News" },
