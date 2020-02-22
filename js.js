@@ -62,7 +62,7 @@ $(document).ready(function() {
 		
 });
 
-// get date
+// get date and time
 function nowDateTime() {
 	nowDate();
 	nowTime();
