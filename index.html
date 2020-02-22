@@ -42,7 +42,6 @@
 	<body>
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<a class="navbar-brand" id="menu-home" href="#"><i class="fas fa-home"></i> Home</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -68,18 +67,18 @@
 			
 				<div class="accordion" id="div-home" >
 					<div class="card">
-						<div class="card-header" id="heading-home">
-							<h2 class="mb-0">
-								<button class="btn btn-link" type="button" aria-expanded="true" aria-controls="collapse-home">
-									Home
-								</button>
-							</h2>
 						</div>
 
 						<div id="collapse-home" class="collapse show" aria-labelledby="heading-home" data-parent="#div-home">
 							<div class="card-body">
 								<p>
-									<div id="dt-home"></div>
+									<div id="dt-home">
+										<center>
+											<p><h4>Welcome to App!</h4></p>
+											<p><h3 id="nowDate"></h3></p>
+											<p><h3><div id="nowTime"></div></h3></p>
+										</center>
+									</div>
 								</p>
 							</div>
 						</div>
@@ -88,16 +87,11 @@
 				
 				<div class="accordion" id="div-sport" style="display:none">
 					<div class="card">
-						<div class="card-header" id="heading-sport">
-							<h2 class="mb-0">
-								<button class="btn btn-link" type="button" aria-expanded="true" aria-controls="collapse-sport">
-									Sports
-								</button>
-							</h2>
-						</div>
-
 						<div id="collapse-sport" class="collapse show" aria-labelledby="heading-sport" data-parent="#div-sport">
 							<div class="card-body">
+								<p>
+									<a class="back" href="#"><i class="fas fa-undo-alt"></i> back</a>
+								</p>
 								<table id="dt-sport" class="display responsive" style="width: 100%"></table>
 							</div>
 						</div>
@@ -106,16 +100,11 @@
 				
 				<div class="accordion" id="div-business" style="display:none">
 					<div class="card">
-						<div class="card-header" id="heading-business">
-							<h2 class="mb-0">
-								<button class="btn btn-link" type="button" aria-expanded="true" aria-controls="collapse-business">
-									Business
-								</button>
-							</h2>
-						</div>
-
 						<div id="collapse-business" class="collapse show" aria-labelledby="heading-business" data-parent="#div-business">
 							<div class="card-body">
+								<p>
+									<a class="back" href="#"><i class="fas fa-undo-alt"></i> back</a>
+								</p>
 								<table id="dt-business" class="display responsive" style="width: 100%"></table>
 							</div>
 						</div>
@@ -124,16 +113,11 @@
 				
 				<div class="accordion" id="div-financial" style="display:none">
 					<div class="card">
-						<div class="card-header" id="heading-financial">
-							<h2 class="mb-0">
-								<button class="btn btn-link" type="button"  aria-expanded="true" aria-controls="collapse-financial">
-									Financial
-								</button>
-							</h2>
-						</div>
-
 						<div id="collapse-financial" class="collapse show" aria-labelledby="heading-financial" data-parent="#div-financial">
 							<div class="card-body">
+								<p>
+									<a class="back" href="#"><i class="fas fa-undo-alt"></i> back</a>
+								</p>
 								<table id="dt-financial" class="display responsive" style="width: 100%"></table>
 							</div>
 						</div>

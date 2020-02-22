@@ -5,15 +5,17 @@ $(document).ready(function() {
 	var urlBusiness = 'http://newsapi.org/v2/everything?q=business&apiKey=d77b40b94e714053b0e20391cad1954b';
 	var urlFinancial = 'http://newsapi.org/v2/everything?q=financial&apiKey=d77b40b94e714053b0e20391cad1954b';
 
+	// add datetime in home page
+	nowDateTime();
+	
 	// add news into arrays 
-	now();
 	callRestApiNews('sport', urlApiSport);
 	callRestApiNews('business', urlBusiness);
 	callRestApiNews('financial', urlFinancial);
 		
 	// show or hide zone of the news
-	$("#menu-home").on("click", function(e) {
-		now();
+	$(".back").on("click", function(e) {
+		nowDateTime();
 		$("#div-home").show();
 		$("#div-sport").hide();
 		$("#div-business").hide();
@@ -61,9 +63,32 @@ $(document).ready(function() {
 });
 
 // get date
-function now() {
-	$('#dt-home').html('Welcome ' + new Date());	
+function nowDateTime() {
+	nowDate();
+	nowTime();
 }
+
+// get date
+function nowDate() {
+	var monthNames = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ];
+  
+	var date = new Date();
+	var day = date.getDate();
+	var monthIndex = date.getMonth();
+	var year = date.getFullYear();
+	$('#nowDate').html(day + "/" + monthNames[monthIndex] + "/" + year);	
+}
+
+// get time
+function nowTime() {
+	var pad = "0";
+	var date = new Date();
+	var minutes = date.getMinutes();
+	var hour = date.getHours();
+	$('#nowTime').html(hour + ":" + pad.substring(0, pad.length - minutes.length) + minutes);	
+}
+
+
 
 // call rest to get news from api
 function callRestApiNews(suject, urlApi) {
