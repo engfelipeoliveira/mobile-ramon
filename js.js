@@ -62,7 +62,7 @@ $(document).ready(function() {
 
 // get date
 function now() {
-	$('#dt-home').html(new Date());	
+	$('#dt-home').html('Welcome ' + new Date());	
 }
 
 // call rest to get news from api
