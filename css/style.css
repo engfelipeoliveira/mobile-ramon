@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.jumbotron {
+    padding: 2rem 2rem !important;
+}
+
+div.container { 
+	max-width: 1200px;
+}
+
+#load {
+	display: none; 
+}	
