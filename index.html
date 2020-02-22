@@ -9,7 +9,6 @@
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 			crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
 
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"
 			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -36,7 +35,7 @@
 		<script type="text/javascript"
 			src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
-		<title>Mobile</title>
+		<title>Mobile News</title>
 
 	</head>
 
@@ -59,7 +58,7 @@
 							<a class="nav-link" id="menu-financial" href="#"><i class="fas fa-dollar-sign"></i> Financial</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="menu-favorites" href="#"><i class="fas fa-star"></i> Favorites</a>
+							<a class="nav-link" id="menu-favorites" href="#"><i class="far fa-save"></i> Saved</a>
 						</li>      
 					</ul>
 				</div>
@@ -79,7 +78,7 @@
 
 						<div id="collapse-home" class="collapse show" aria-labelledby="heading-home" data-parent="#div-home">
 							<div class="card-body">
-								<div id="dataTable-home"></div>
+								<div id="dt-home"></div>
 							</div>
 						</div>
 					</div>					
@@ -97,7 +96,7 @@
 
 						<div id="collapse-sport" class="collapse show" aria-labelledby="heading-sport" data-parent="#div-sport">
 							<div class="card-body">
-								<table id="dataTable-sport" class="display responsive" style="width: 100%"></table>
+								<table id="dt-sport" class="display responsive" style="width: 100%"></table>
 							</div>
 						</div>
 					</div>					
@@ -115,7 +114,7 @@
 
 						<div id="collapse-business" class="collapse show" aria-labelledby="heading-business" data-parent="#div-business">
 							<div class="card-body">
-								<table id="dataTable-business" class="display responsive" style="width: 100%"></table>
+								<table id="dt-business" class="display responsive" style="width: 100%"></table>
 							</div>
 						</div>
 					</div>					
@@ -133,7 +132,7 @@
 
 						<div id="collapse-financial" class="collapse show" aria-labelledby="heading-financial" data-parent="#div-financial">
 							<div class="card-body">
-								<table id="dataTable-financial" class="display responsive" style="width: 100%"></table>
+								<table id="dt-financial" class="display responsive" style="width: 100%"></table>
 							</div>
 						</div>
 					</div>					
