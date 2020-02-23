@@ -12,6 +12,7 @@ $(document).ready(function() {
 	callRestApiNews('sport', urlApiSport);
 	callRestApiNews('business', urlBusiness);
 	callRestApiNews('financial', urlFinancial);
+	setDataTable(arraySavedNews, 'saved');
 		
 	// show or hide zone of the news
 	$(".back").on("click", function(e) {
@@ -20,6 +21,7 @@ $(document).ready(function() {
 		$("#div-sport").hide();
 		$("#div-business").hide();
 		$("#div-financial").hide();		
+		$("#div-saved").hide();		
 	});
 
 	$("#menu-sport").on("click", function(e) {
@@ -27,6 +29,7 @@ $(document).ready(function() {
 		$("#div-sport").show();
 		$("#div-business").hide();
 		$("#div-financial").hide();
+		$("#div-saved").hide();		
 	});
 	
 	$("#menu-business").on("click", function(e) {
@@ -34,6 +37,7 @@ $(document).ready(function() {
 		$("#div-sport").hide();
 		$("#div-business").show();
 		$("#div-financial").hide();
+		$("#div-saved").hide();		
 	});
 
 	$("#menu-financial").on("click", function(e) {
@@ -41,21 +45,57 @@ $(document).ready(function() {
 		$("#div-sport").hide();
 		$("#div-business").hide();
 		$("#div-financial").show();
+		$("#div-saved").hide();		
+	});
+
+
+	$("#menu-saved").on("click", function(e) {
+		$("#div-home").hide();
+		$("#div-sport").hide();
+		$("#div-business").hide();
+		$("#div-financial").hide();
+		$("#div-saved").show();	
+		refreshSavedNews();
+		
 	});
 	
-	$(".btn-fav").on("click", function(e) {
+	$(".btn-saved").on("click", function(e) {
 		
-		var table = $('#dt-sport').DataTable().rows().data();
+		var selectedNews = $(this).attr("id");
+		var tableSport = $('#dt-sport').DataTable().rows().data();
+		var tableBusiness = $('#dt-business').DataTable().rows().data();
+		var tableFinancial = $('#dt-financial').DataTable().rows().data();
 		
+		$.each(tableSport, function() {
+				var dtPublished = this[0];
+				var news = this[1];
+				
+				if(selectedNews == dtPublished){
+					arraySavedNews.push([dtPublished, news, ""]);
+				}
+		});
 		
-		var lineNews = $(this).attr("id");
-		var table = lineNews.split('-')[0];
-		var tr = lineNews.split('-')[1];
+				
+		$.each(tableBusiness, function() {
+				var dtPublished = this[0];
+				var news = this[1];
+				
+				if(selectedNews == dtPublished){
+					arraySavedNews.push([dtPublished, news, ""]);
+				}
+		});
 		
-		var publishedAt = $("#dt-" + table)[0].rows[tr].cells[0].innerText;
-		var description = $("#dt-" + table)[0].rows[tr].cells[1].innerText;
-
-		SavedNew.push([publishedAt, description, ""]);						
+				
+		$.each(tableFinancial, function() {
+				var dtPublished = this[0];
+				var news = this[1];
+				
+				if(selectedNews == dtPublished){
+					arraySavedNews.push([dtPublished, news, ""]);
+				}
+		});
+		
+					
 	});
 	
 	
@@ -102,7 +142,7 @@ function callRestApiNews(suject, urlApi) {
 			let news;
 			$.each(data.articles, function() {
 				news = {publishedAt : this.publishedAt, description : this.description};
-				arrayOfNews.push([this.publishedAt, this.description, "<a class='btn-fav' id='"+this.publishedAt+"' href='#'><i class='fas fa-save'></i></a>"]);				
+				arrayOfNews.push([this.publishedAt, this.description, "<a class='btn-saved' id='"+this.publishedAt+"' href='#'><i class='fas fa-save'></i></a>"]);				
 			});
 			setDataTable(arrayOfNews, suject);			
 		})
@@ -115,8 +155,6 @@ function setDataTable(arrayOfNews, el) {
 		"searching": true,
 		"info": true,
 		"lengthChange": true,
-		"select": true,
-		rightColumns: 1,
 		data: arrayOfNews,
 		columns: [
 			{ title: "Published" },
@@ -125,3 +163,10 @@ function setDataTable(arrayOfNews, el) {
 		]
 	});	
 }
+
+function refreshSavedNews() {
+	$('#dt-saved').DataTable().destroy();
+	setDataTable(arraySavedNews, 'saved');
+	
+}
+
