@@ -93,13 +93,8 @@ $(document).ready(function() {
 				if(selectedNews == dtPublished){
 					arraySavedNews.push([dtPublished, news, ""]);
 				}
-		});
-		
-					
+		});	
 	});
-	
-	
-		
 });
 
 // get date and time
@@ -111,7 +106,6 @@ function nowDateTime() {
 // get date
 function nowDate() {
 	var monthNames = [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" ];
-  
 	var date = new Date();
 	var day = date.getDate();
 	var monthIndex = date.getMonth();
@@ -125,7 +119,7 @@ function nowTime() {
 	var date = new Date();
 	var minutes = date.getMinutes();
 	var hour = date.getHours();
-	$('#nowTime').html(hour + ":" + pad.substring(0, pad.length - minutes.length) + minutes);	
+	$('#nowTime').html(hour + ":" + pad.substring(1, pad.length - minutes.length) + minutes);	
 }
 
 
@@ -158,12 +152,13 @@ function setDataTable(arrayOfNews, el) {
 		data: arrayOfNews,
 		columns: [
 			{ title: "Published" },
-			{ title: "News" },
-			{ title: "Action" }
+			{ title: "Text" },
+			{ title: "Save" }
 		]
 	});	
 }
 
+// refresh datatable saved news
 function refreshSavedNews() {
 	$('#dt-saved').DataTable().destroy();
 	setDataTable(arraySavedNews, 'saved');
