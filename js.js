@@ -31,15 +31,8 @@ $(document).ready(function() {
 	$("#clear").on("click", function(e) {
 		localStorage.clear();
 		arraySavedNews = [];
-		
-			
 		refreshSavedNews();
-		
-		
 	});
-	
-	
-	
 
 	$("#menu-sport").on("click", function(e) {
 		$("#div-home").hide();
