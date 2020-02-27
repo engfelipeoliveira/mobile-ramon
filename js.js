@@ -26,6 +26,20 @@ $(document).ready(function() {
 		$("#div-financial").hide();		
 		$("#div-saved").hide();		
 	});
+	
+	// clear news
+	$("#clear").on("click", function(e) {
+		localStorage.clear();
+		arraySavedNews = [];
+		
+			
+		refreshSavedNews();
+		
+		
+	});
+	
+	
+	
 
 	$("#menu-sport").on("click", function(e) {
 		$("#div-home").hide();
@@ -58,8 +72,7 @@ $(document).ready(function() {
 		$("#div-business").hide();
 		$("#div-financial").hide();
 		$("#div-saved").show();	
-		refreshSavedNews();
-		
+		refreshSavedNews();		
 	});
 	
 	$(".btn-saved").on("click", function(e) {
