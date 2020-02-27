@@ -1,4 +1,7 @@
 var arraySavedNews = [];
+if(localStorage.getItem("arraySavedNews") != null){
+	arraySavedNews = JSON.parse(localStorage.getItem("arraySavedNews"));
+}
 
 $(document).ready(function() {
 	var urlApiSport = 'http://newsapi.org/v2/everything?q=sport&apiKey=d77b40b94e714053b0e20391cad1954b';
@@ -94,6 +97,8 @@ $(document).ready(function() {
 					arraySavedNews.push([dtPublished, news, ""]);
 				}
 		});	
+		
+		localStorage.setItem("arraySavedNews", JSON.stringify(arraySavedNews));
 	});
 });
 
